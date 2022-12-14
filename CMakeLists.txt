@@ -19,6 +19,9 @@ set(PROJECT_SOURCES
         login.cpp
         login.h
         login.ui
+
+        lib/jsonUtils/jsonWriter.hpp
+        lib/jsonUtils/jsonWriter.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
