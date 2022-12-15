@@ -22,6 +22,9 @@ set(PROJECT_SOURCES
 
         lib/utils/utils.hpp
         lib/utils/utils.cpp
+
+        lib/readWrite/jsonRW.hpp
+        lib/readWrite/jsonRW.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
