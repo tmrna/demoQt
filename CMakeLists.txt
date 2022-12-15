@@ -20,8 +20,8 @@ set(PROJECT_SOURCES
         login.h
         login.ui
 
-        lib/jsonUtils/jsonWriter.hpp
-        lib/jsonUtils/jsonWriter.cpp
+        lib/utils/utils.hpp
+        lib/utils/utils.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
