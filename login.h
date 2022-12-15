@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QMainWindow>
+#include "lib/utils/utils.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Login; }
@@ -13,6 +14,7 @@ class Login : public QMainWindow
 
 public:
     Login(QWidget *parent = nullptr);
+
     ~Login();
 
 private:

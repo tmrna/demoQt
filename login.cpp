@@ -6,7 +6,15 @@ Login::Login(QWidget *parent)
     , ui(new Ui::Login)
 {
     ui->setupUi(this);
+
+    // set the shadow to sunken
+    ui->frame->setFrameShadow(QFrame::Sunken);
+
+    //ui->frame->setStyleSheet();
+
 }
+
+
 
 Login::~Login()
 {

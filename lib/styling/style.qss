@@ -1,0 +1,44 @@
+QWidget{
+  background-color: rgb(233, 240, 238) 
+}
+
+QFrame {
+  background-color: rgb(63, 43, 108);
+  alternate-background-color: rgb(170, 0, 255);
+  color: rgb(23, 236, 255);
+  font-size: 40px;
+  border: 12px rgb(20, 20, 20);
+  border-radius: 12px;
+  padding: 3px
+}
+
+QLineEdit{
+  background-color: white;
+  color: black;
+  border: 12px solid-white;
+  border-radius: 6px;
+  padding: 3px
+}
+
+QCheckBox{
+  color: teal;
+  background-color:rgb(63, 43, 108);
+}
+
+QPushButton{
+  background-color: rgb(23, 236, 255);
+  border-radius: 2px;
+}
+
+QRadioButton{
+  background-color: rgb(63, 43, 108);
+  color: rgb(23, 236, 255);
+}
+
+QRadioButton:checked{
+  background-color: blue;
+}
+QRadioButton:unchecked{
+  border-radius: 9px;
+  background-color: white;
+}

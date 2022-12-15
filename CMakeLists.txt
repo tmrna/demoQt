@@ -20,11 +20,15 @@ set(PROJECT_SOURCES
         login.h
         login.ui
 
+
         lib/utils/utils.hpp
         lib/utils/utils.cpp
 
-        lib/readWrite/jsonRW.hpp
-        lib/readWrite/jsonRW.cpp
+        lib/styling/effects.hpp
+        lib/styling/effects.cpp
+#
+#        lib/readWrite/jsonRW.hpp
+#        lib/readWrite/jsonRW.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
