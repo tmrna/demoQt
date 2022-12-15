@@ -16,10 +16,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        login.cpp
-        login.h
-        login.ui
+        forms/login/login.cpp
+        forms/login/login.h
+        forms/login/login.ui
 
+        forms/signup/signup.hpp
+        forms/signup/signup.cpp
+        forms/signup/signup.ui
 
         lib/utils/utils.hpp
         lib/utils/utils.cpp
