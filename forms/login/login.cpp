@@ -10,7 +10,10 @@ Login::Login(QWidget *parent)
     // set the shadow to sunken
     ui->frame->setFrameShadow(QFrame::Sunken);
 
-    //ui->frame->setStyleSheet();
+    ui->usrLine->setPlaceholderText("Username");
+    ui->pwLine->setPlaceholderText("Password");
+
+    ui->pwLine->setEchoMode(QLineEdit::Password);
 
 }
 
@@ -34,5 +37,12 @@ void Login::on_radioButton_clicked()
      signupPage->show();
      // kill login
      this->close();
+}
+
+
+void Login::on_checkBox_stateChanged(int arg1)
+{
+    ui->pwLine->setEchoMode(ui->checkBox->checkState() == Qt::Checked ?
+                                QLineEdit::Normal : QLineEdit::Password);
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>354</width>
-    <height>484</height>
+    <height>440</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>20</x>
       <y>20</y>
       <width>311</width>
-      <height>411</height>
+      <height>381</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -62,21 +62,11 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="pwCnfLine">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>310</y>
-       <width>181</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QCheckBox" name="checkBox">
      <property name="geometry">
       <rect>
        <x>190</x>
-       <y>340</y>
+       <y>300</y>
        <width>111</width>
        <height>20</height>
       </rect>
@@ -89,7 +79,7 @@
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>370</y>
+       <y>330</y>
        <width>80</width>
        <height>22</height>
       </rect>
