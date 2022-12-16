@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include "../login/login.h"
+#include "../../lib/utils/utils.hpp"
+
 namespace Ui {
 class signup;
 }
@@ -17,6 +20,8 @@ public:
 
 private slots:
     void on_passwordChkBox_stateChanged(int arg1);
+
+    void on_radioButton_clicked();
 
 private:
     Ui::signup *ui;

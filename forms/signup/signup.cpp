@@ -35,3 +35,13 @@ void signup::on_passwordChkBox_stateChanged(int arg1)
     ui->confirmPasswordLine->setEchoMode(ui->passwordLine->echoMode());
 }
 
+
+void signup::on_radioButton_clicked()
+{
+    Login* loginPage = new Login();
+    loginPage->setStyleSheet(utils::getGeneralStyling());
+    this->hide();
+    loginPage->show();
+    this->close();
+}
+
