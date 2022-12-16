@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "lib/utils/utils.hpp"
+#include "forms/signup/signup.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Login; }
@@ -16,6 +17,9 @@ public:
     Login(QWidget *parent = nullptr);
 
     ~Login();
+
+private slots:
+    void on_radioButton_clicked();
 
 private:
     Ui::Login *ui;

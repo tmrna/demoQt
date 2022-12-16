@@ -12,7 +12,7 @@ namespace utils{
 
     // read the .qss file and return the style.
     QString getStyling(const char* path);
-
+    QString getGeneralStyling();
 }
 
 #endif

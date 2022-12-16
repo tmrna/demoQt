@@ -19,3 +19,7 @@ QString utils::getStyling(const char* path){
 
     return style;
 }
+
+QString utils::getGeneralStyling(){
+    return utils::getStyling("../demoQt/lib/styling/style.qss");
+}

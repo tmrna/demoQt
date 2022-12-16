@@ -10,7 +10,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     try{
-        QString style = utils::getStyling("../demoQt/lib/styling/style.qss");
+       // QString style = utils::getStyling("../demoQt/lib/styling/style.qss");
+        QString style = utils::getGeneralStyling();
         Login w;
         w.setStyleSheet(style);
         w.show();
