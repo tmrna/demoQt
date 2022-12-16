@@ -17,7 +17,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 set(PROJECT_SOURCES
         main.cpp
 
-        configure.hpp
+        configuration.hpp
 
         forms/login/login.cpp
         forms/login/login.h
