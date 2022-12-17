@@ -1,10 +1,22 @@
 #Refresh the database if tables exist
 
+drop table if exists clientInfo;
+
+drop table if exists customerIndustry;
+
+drop table if exists customerInfo;
+
+drop table if exists client;
+
+drop table if exists customer;
+
 drop table if exists distributorInfo;
 
 drop table if exists distributorRep;
 
 drop table if exists distributorRepInfo;
+
+drop table if exists industry;
 
 drop table if exists product;
 
@@ -14,6 +26,8 @@ drop table if exists material;
 
 drop table if exists distributor;
 
+drop table if exists recipeSpec;
+
 drop table if exists recipe;
 
 drop table if exists spec;
@@ -22,7 +36,10 @@ drop table if exists userAddress;
 
 drop table if exists userInfo;
 
+drop table if exists timeZone;
+
 drop table if exists user;
+
 
 #################################################
 # time zone
