@@ -6,17 +6,15 @@ drop table if exists customerIndustry;
 
 drop table if exists customerInfo;
 
-drop table if exists client;
-
-drop table if exists customer;
-
 drop table if exists distributorInfo;
-
-drop table if exists distributorRep;
 
 drop table if exists distributorRepInfo;
 
+drop table if exists distributorRep;
+
 drop table if exists industry;
+
+drop table if exists orderContent;
 
 drop table if exists product;
 
@@ -30,7 +28,15 @@ drop table if exists recipeSpec;
 
 drop table if exists recipe;
 
+drop table if exists salesOrder;
+
+drop table if exists client;
+
+drop table if exists customer;
+
 drop table if exists spec;
+
+drop table if exists unit;
 
 drop table if exists userAddress;
 
@@ -48,6 +54,12 @@ drop table if exists user;
 create table timeZone(
   id int not null auto_increment,
   abbreviation varchar(2) not null ,
+  primary key (id)
+);
+
+create table unit(
+  id int not null auto_increment,
+  unitTag varchar(10) not null,
   primary key (id)
 );
 
@@ -125,6 +137,8 @@ create table distributorRepInfo (
     lName varchar(45) not null ,
     email varchar(45) not null ,
     phone int not null,
+    foreign key (id) references distributorRep(id),
+    primary key (id),
     deptName varchar(45)
 );
 
@@ -135,13 +149,16 @@ create table distributorRepInfo (
 create table material(
   id int not null auto_increment,
   name varchar(45) not null ,
+  unitId int not null ,
+  cost int not null,
   distributorId int not null,
   alternateDistributorId int,
   description varchar(500) not null,
   notes varchar(150),
   primary key (id),
   foreign key(distributorId) references distributor(id),
-  foreign key (alternateDistributorId) references distributor(id)
+  foreign key (alternateDistributorId) references distributor(id),
+  foreign key (unitId) references unit(id)
 );
 
 create table spec(
@@ -172,9 +189,10 @@ create table recipeMaterial(
   recipeId int not null,
   materialId int not null,
   materialUsed int not null,
-  unit varchar(10) not null,
+  unitId int not null ,
   foreign key (recipeId) references recipe(id),
-  foreign key (materialId) references material(id)
+  foreign key (materialId) references material(id),
+  foreign key (unitId) references unit(id)
 );
 
 ######################################################
@@ -256,3 +274,22 @@ create table customerIndustry(
     foreign key (industryId) references industry(id)
 );
 
+########################################################
+# orders
+########################################################
+
+create table salesOrder(
+  id int not null auto_increment,
+  salesPersonId int not null,
+  clientId int not null,
+  primary key (id),
+  foreign key (salesPersonId) references user(id),
+  foreign key (clientId) references client(id)
+);
+
+create table orderContent(
+  id int not null,
+  productId int not null ,
+  foreign key (id) references salesOrder(id),
+  foreign key (productId) references product(id)
+);
