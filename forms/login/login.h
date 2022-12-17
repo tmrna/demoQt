@@ -2,8 +2,9 @@
 #define LOGIN_H
 
 #include <QMainWindow>
-#include "lib/utils/utils.hpp"
-#include "forms/signup/signup.hpp"
+#include "../../lib/utils/utils.hpp"
+#include "../signup/signup.hpp"
+#include "../../lib/styling/effects.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Login; }

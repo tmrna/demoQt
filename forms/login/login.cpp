@@ -7,13 +7,30 @@ Login::Login(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // fix window size
+    setFixedSize(geometry().width(), geometry().height());
+
     // set the shadow to sunken
     ui->frame->setFrameShadow(QFrame::Sunken);
+    // set a shadow for the frame
+    ui->frame->setGraphicsEffect(heavyShadow());
 
+    // placeholder text for fields
     ui->usrLine->setPlaceholderText("Username");
     ui->pwLine->setPlaceholderText("Password");
 
+    // hide password by default
     ui->pwLine->setEchoMode(QLineEdit::Password);
+
+    // set skinny shadows for the text fields
+    ui->usrLine->setGraphicsEffect(skinnyShadow());
+    ui->pwLine->setGraphicsEffect(skinnyShadow());
+
+    // set mild shadow for buttons
+    ui->pushButton->setGraphicsEffect(mildShadow());
+    ui->radioButton->setGraphicsEffect(mildShadow());
+
+
 
 }
 
