@@ -24,8 +24,15 @@ drop table if exists userInfo;
 
 drop table if exists user;
 
+#################################################
+# time zone
+#################################################
 
-
+create table timeZone(
+  id int not null auto_increment,
+  abbreviation varchar(2) not null ,
+  primary key (id)
+);
 
 ##################################################
 # user
@@ -44,9 +51,11 @@ create table userInfo (
     fName varchar(45) not null,
     lName varchar(45) not null,
     phoneNumber int not null,
+    timeZoneId int not null,
     primary key (id),
     foreign key (id) references user(id)
-        on delete cascade
+        on delete cascade,
+    foreign key (timeZoneId) references timeZone(id)
 );
 # require users to have an address, name, method of contact
 create table userAddress (
@@ -129,17 +138,24 @@ create table recipe(
   id int not null auto_increment,
   name varchar(45),
   description varchar(500) not null ,
-  specId int not null,
-  primary key (id),
-  foreign key (specId) references spec(id)
+  primary key (id)
+);
+
+create table recipeSpec(
+    recipeId int not null ,
+    specId int not null ,
+    foreign key (recipeId) references recipe(id),
+    primary key (recipeId),
+    foreign key (specId) references spec(id)
 );
 
 # to get multivalued attribute will make a new recipe
 # by taking highest current val and increasing by 1
 create table recipeMaterial(
-  id int not null,
   recipeId int not null,
   materialId int not null,
+  materialUsed int not null,
+  unit varchar(10) not null,
   foreign key (recipeId) references recipe(id),
   foreign key (materialId) references material(id)
 );
@@ -155,5 +171,71 @@ create table product(
     currentCount int not null,
     primary key(id),
     foreign key (recipeId) references recipe(id)
+);
+
+
+#####################################################
+# Industry
+#####################################################
+
+create table industry(
+    id int not null auto_increment,
+    type varchar(45),
+    primary key (id)
+);
+
+######################################################
+# customer / client
+######################################################
+
+create table customer(
+    id int not null auto_increment,
+    name varchar(50),
+    primary key (id)
+);
+
+create table client(
+    id int not null auto_increment,
+    employerId int not null ,
+    primary key (id),
+    foreign key (employerId) references customer(id)
+);
+
+
+# bijection between info and customer
+create table customerInfo(
+  id int not null,
+  country varchar(45) not null,
+  provinceOrState varchar(2) not null,
+  postalCode int not null,
+  streetName varchar(45) not null ,
+  streetNumber int not null ,
+  primaryRepId int,
+  foreign key (id) references customer(id),
+  primary key (id),
+  foreign key (primaryRepId) references client(id)
+
+);
+
+# bijection between info and client
+create table clientInfo(
+    id int not null,
+    fName varchar(45) not null ,
+    lName varchar(45) not null ,
+    phone int not null ,
+    timeZoneId int not null,
+    foreign key (id) references client(id),
+    primary key (id),
+    foreign key (timeZoneId) references timeZone(id)
+);
+
+# allows customer to have multiple industries
+# ie mitsubishi chemical would be plastics, pharmaceuticals,
+# carbon products, etc.
+create table customerIndustry(
+    customerId int not null,
+    industryId int not null,
+    foreign key (customerId) references customer(id),
+    foreign key (industryId) references industry(id)
 );
 
