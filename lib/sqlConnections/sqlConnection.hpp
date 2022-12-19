@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <QString>
 
+#include "../exceptions/sqlException.hpp"
 
 class sqlConnection{
 protected:
@@ -23,7 +24,6 @@ protected:
 public:
     // virtual
     virtual void connect();
-    virtual void setCursor();
     virtual void bindParam(const QString&);
     virtual void executeQuery();
 
