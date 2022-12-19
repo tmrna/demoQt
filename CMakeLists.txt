@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(demoQt VERSION 0.1 LANGUAGES CXX)
 
+
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)
@@ -12,26 +14,75 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Sql)
+#sql support
+
+
 
 set(PROJECT_SOURCES
         main.cpp
 
         configuration.hpp
+######FORMS###########FORMS################## FORMS
+
+##     LOGIN
 
         forms/login/login.cpp
         forms/login/login.h
         forms/login/login.ui
+#---------------------------------------------------------------------------------------------------------
 
+##  SIGNUP
         forms/signup/signup.hpp
         forms/signup/signup.cpp
         forms/signup/signup.ui
 
+
+## ADMIN SIGNPUP
+
+    forms/admin/adminsignup.hpp
+    forms/admin/adminsignup.cpp
+    forms/admin/adminsignup.ui
+
+## ADMIN LOGIN
+
+
+## ADMIN HOME
+
+
+## USER HOME
+
+
+## CLIENT HOME
+
+
+
+#################################     LIB  ################################# LIB
+
+# utilities
         lib/utils/utils.hpp
         lib/utils/utils.cpp
 
+# effects
         lib/styling/effects.hpp
         lib/styling/effects.cpp
+
+# exceptions
+        lib/exceptions/sqlException.hpp
+        lib/exceptions/sqlException.cpp
+#  SQL connections
+        lib/sqlConnections/sqlConnection.hpp
+        lib/sqlConnections/sqlConnection.cpp
+
+        lib/sqlConnections/erpConnection.hpp
+        lib/sqlConnections/erpConnection.cpp
+
+        lib/sqlConnections/crmConnection.hpp
+        lib/sqlConnections/crmConnection.cpp
+
+        lib/sqlConnections/adminConnection.cpp
+        lib/sqlConnections/adminConnection.cpp
+
 #
 #        lib/readWrite/jsonRW.hpp
 #        lib/readWrite/jsonRW.cpp
@@ -60,7 +111,12 @@ else()
     endif()
 endif()
 
-target_link_libraries(demoQt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(demoQt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
+                                        Qt${QT_VERSION_MAJOR}::Sql
+)
+
+
+#target_link_libraries(demoQt Qt5::Core Qt5::Quick Qt5::Sql)
 
 set_target_properties(demoQt PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

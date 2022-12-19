@@ -1,5 +1,5 @@
 QWidget{
-  background-color: rgb(233, 240, 238) 
+  background-color: rgba(233, 240, 238, 0);
 }
 
 QFrame {

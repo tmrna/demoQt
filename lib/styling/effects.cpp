@@ -47,7 +47,7 @@ QGraphicsDropShadowEffect*   heavyShadow(){
 
     QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect();
 
-    effect->setBlurRadius(3);
+    effect->setBlurRadius(30);
     effect->setXOffset(7);
     effect->setYOffset(7);
     effect->setColor(Qt::black);
