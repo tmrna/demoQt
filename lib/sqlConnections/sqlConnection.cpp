@@ -1,10 +1,10 @@
 #include "sqlConnection.hpp"
 
 
-bool sqlConnection::beginTransaction(){
+bool sqlConnection::init(){
     return conn.transaction();
 }
-bool sqlConnection::endTransaction(){
+bool sqlConnection::commit(){
     return conn.commit();
 }
 
@@ -18,13 +18,15 @@ bool sqlConnection::setQuery(const QString& queryString){
         return query->prepare(queryString);
     }
 
-    query = new QSqlQuery();
+    query = new QSqlQuery(conn);
     return query->prepare(queryString);
 }
 
 void sqlConnection::bindPositionalParam(const QString& param){
-    if(!querySetStatus()){
-        throw queryException("Query is not set!");
-    }
     query->addBindValue(param);
+}
+
+bool sqlConnection::nextRes(){
+    if(query == nullptr) return false;
+    return query->next();
 }

@@ -6,7 +6,6 @@
 #include <QSqlQuery>
 #include <QString>
 
-#include "../exceptions/sqlException.hpp"
 
 class sqlConnection{
 protected:
@@ -22,16 +21,13 @@ protected:
     QSqlQuery*  query;
 
 public:
-    // virtual
-    virtual void connect();
 
     // To be inherited
-
     bool executeQuery(){return query->exec();}
 
     // begin /close transacitons
-    bool beginTransaction();
-    bool endTransaction();
+    bool init();
+    bool commit();
 
     // tell if query is set or not
     bool querySetStatus();
@@ -42,12 +38,7 @@ public:
     // bind in the format select * from user where username = ?
     void bindPositionalParam(const QString& param);
 
-    // bind in the format select * from user where username = :username
-    //                  query->bindValue(:username, "the username")
-    template<typename T1,typename T2>
-    void bindParam(const T1& target, const T2& param){
-        query->bindValue(target, param);
-    }
+    bool nextRes();
 
 
     // returns the i'th element of the result
