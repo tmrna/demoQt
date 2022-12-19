@@ -9,13 +9,6 @@
 
 class sqlConnection{
 protected:
-    // connection info
-    QString driver;
-    QString host;
-    QString user;
-    QString password;
-    QString schema;
-
     // database connection
     QSqlDatabase conn;
     QSqlQuery*  query;
