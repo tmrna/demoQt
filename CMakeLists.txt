@@ -80,7 +80,7 @@ set(PROJECT_SOURCES
         lib/sqlConnections/crmConnection.hpp
         lib/sqlConnections/crmConnection.cpp
 
-        lib/sqlConnections/adminConnection.cpp
+        lib/sqlConnections/adminConnection.hpp
         lib/sqlConnections/adminConnection.cpp
 
 #
