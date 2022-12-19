@@ -24,12 +24,10 @@ protected:
 public:
     // virtual
     virtual void connect();
-    virtual void bindParam(const QString&);
-    virtual void executeQuery();
-
 
     // To be inherited
 
+    bool executeQuery(){return query->exec();}
 
     // begin /close transacitons
     bool beginTransaction();
@@ -49,6 +47,13 @@ public:
     template<typename T1,typename T2>
     void bindParam(const T1& target, const T2& param){
         query->bindValue(target, param);
+    }
+
+
+    // returns the i'th element of the result
+    template<typename T>
+    T fetchResult(int i){
+        return query->value(i);
     }
 
 };
