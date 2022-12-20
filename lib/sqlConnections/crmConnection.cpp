@@ -6,13 +6,11 @@ crmConnection::crmConnection(){
 
     query = nullptr;
 
-    conn.addDatabase(connSpecs.DriverType);
+    conn = QSqlDatabase::addDatabase(connSpecs.DriverType);
     conn.setHostName(connSpecs.Host);
-    conn.setUserName(connSpecs.User);
-    conn.setPassword(connSpecs.Password);
     conn.setDatabaseName(connSpecs.Schema);
 
-    if(!conn.open()){
+    if(!conn.open(connSpecs.User, connSpecs.Password)){
         throw sqlException("connection user credentials rejected");
     }
 
