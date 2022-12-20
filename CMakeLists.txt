@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.5)
 project(demoQt VERSION 0.1 LANGUAGES CXX)
 
 
-
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)
@@ -13,15 +12,15 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Sql)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Sql Test)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Sql Test)
 #sql support
 
 
 
 set(PROJECT_SOURCES
-        main.cpp
 
+        main.cpp
         configuration.hpp
 ######FORMS###########FORMS################## FORMS
 
@@ -38,7 +37,7 @@ set(PROJECT_SOURCES
         forms/signup/signup.ui
 
 
-## ADMIN SIGNPUP
+## ADMIN SIGNUP
 
     forms/admin/adminsignup.hpp
     forms/admin/adminsignup.cpp
@@ -86,6 +85,9 @@ set(PROJECT_SOURCES
 #
 #        lib/readWrite/jsonRW.hpp
 #        lib/readWrite/jsonRW.cpp
+
+
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -133,3 +135,37 @@ install(TARGETS demoQt
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(demoQt)
 endif()
+
+
+###################  TESTING
+
+
+enable_testing()
+
+set(SQL_TEST_SOURCES
+  
+            configuration.hpp
+    # exceptions
+            lib/exceptions/sqlException.hpp
+            lib/exceptions/sqlException.cpp
+    #  SQL connections
+            lib/sqlConnections/sqlConnection.hpp
+            lib/sqlConnections/sqlConnection.cpp
+
+            lib/sqlConnections/erpConnection.hpp
+            lib/sqlConnections/erpConnection.cpp
+
+            lib/sqlConnections/crmConnection.hpp
+            lib/sqlConnections/crmConnection.cpp
+
+            lib/sqlConnections/adminConnection.hpp
+            lib/sqlConnections/adminConnection.cpp
+)
+
+
+add_executable(erp_conn_ctor ${SQL_TEST_SOURCES} tests/sqlTests/erpTests/erpCtor.cpp
+)
+
+target_link_libraries(erp_conn_ctor Qt${QT_VERSION_MAJOR}::Sql Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test)
+add_test(NAME erp_conn_ctor COMMAND erp_conn_ctor)
+
