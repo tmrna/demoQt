@@ -137,11 +137,13 @@ if(QT_VERSION_MAJOR EQUAL 6)
 endif()
 
 
-###################  TESTING
+###################  TESTING ############################################################
 
 
 enable_testing()
 
+
+##############################  LIBRARY / DEPS  #############################################
 set(SQL_TEST_SOURCES
   
             configuration.hpp
@@ -163,9 +165,32 @@ set(SQL_TEST_SOURCES
 )
 
 
+
+set(QT_DEPS Qt${QT_VERSION_MAJOR}::Sql Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test)
+
+
+###########################       EXECUTABLES          ###############################
+
 add_executable(erp_conn_ctor ${SQL_TEST_SOURCES} tests/sqlTests/erpTests/erpCtor.cpp
 )
 
-target_link_libraries(erp_conn_ctor Qt${QT_VERSION_MAJOR}::Sql Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test)
+add_executable(crm_conn_ctor ${SQL_TEST_SOURCES} tests/sqlTests/crmTests/crmCtor.cpp)
+
+add_executable(admin_conn_ctor ${SQL_TEST_SOURCES} tests/sqlTests/adminTests/adminCtor.cpp)
+
+#########################      DEPS LINK   #####################################
+
+target_link_libraries(erp_conn_ctor ${QT_DEPS})
+
+target_link_libraries(crm_conn_ctor ${QT_DEPS})
+
+target_link_libraries(admin_conn_ctor ${QT_DEPS})
+
+
+########################     ADDING TESTS  ###################################
+
 add_test(NAME erp_conn_ctor COMMAND erp_conn_ctor)
 
+add_test(NAME crm_conn_ctor COMMAND crm_conn_ctor)
+
+add_test(NAME admin_conn_ctor COMMAND admin_conn_ctor)
