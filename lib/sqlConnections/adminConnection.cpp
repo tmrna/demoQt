@@ -3,6 +3,8 @@
 
 adminConnection::adminConnection(){
     query = nullptr;
+
+    conn.addDatabase(connSpecs.DriverType);
     conn.setHostName(connSpecs.Host);
     conn.setDatabaseName(connSpecs.Schema);
 
