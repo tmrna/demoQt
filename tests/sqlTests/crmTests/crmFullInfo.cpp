@@ -18,9 +18,9 @@ int main(){
   }
 
   test.setQuery("insert into userContact (id, phone, altPhone, email) values (?, ?, ?, ?)");
-  test.bindPositionalParam(userId);
-  test.bindPositionalParam(5551234569);
-  test.bindPositionalParam(5557896543);
+  //test.bindPositionalParam(userId);
+  //test.bindPositionalParam(5551234569);
+  //test.bindPositionalParam(5557896543);
   test.bindPositionalParam("exmapleEmail@exmapleEmailPlace.com");
   test.executeQuery();
 
