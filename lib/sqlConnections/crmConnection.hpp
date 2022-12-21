@@ -7,7 +7,7 @@
 
 class crmConnection: public sqlConnection{
 private:
-    crmInfo connSpecs;
+    crmDatabase database;
 public:
 
     crmConnection();

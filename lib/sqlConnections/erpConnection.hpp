@@ -7,7 +7,7 @@
 
 class erpConnection : public sqlConnection{
 private:
-    erpInfo connSpecs;
+    erpDatabase database;
 public:
     // ctor + dtor
     erpConnection();

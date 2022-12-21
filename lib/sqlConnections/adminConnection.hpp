@@ -7,7 +7,7 @@
 
 class adminConnection: public sqlConnection{
 private:
-    adminInfo connSpecs;
+    adminDatabase database;
 public:
     adminConnection();
     ~adminConnection();
