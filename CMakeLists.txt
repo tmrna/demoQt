@@ -142,7 +142,6 @@ endif()
 
 enable_testing()
 
-
 ##############################  LIBRARY / DEPS  #############################################
 set(SQL_TEST_SOURCES
   
@@ -164,33 +163,55 @@ set(SQL_TEST_SOURCES
             lib/sqlConnections/adminConnection.cpp
 )
 
-
+set(ERP_TEST_PATH tests/sqlTests/erpTests)
+set(CRM_TEST_PATH tests/sqlTests/crmTests)
+set(ADMIN_TEST_PATH tests/sqlTests/adminTests)
 
 set(QT_DEPS Qt${QT_VERSION_MAJOR}::Sql Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Test)
 
 
-###########################       EXECUTABLES          ###############################
+# macro for setting tests
 
-add_executable(erp_conn_ctor ${SQL_TEST_SOURCES} tests/sqlTests/erpTests/erpCtor.cpp
-)
+macro(gen_test TEST_NAME)
+  add_executable(${TEST_NAME} ${ARGN})
+  target_link_libraries(${TEST_NAME} ${QT_DEPS})
+  add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+endmacro()
 
-add_executable(crm_conn_ctor ${SQL_TEST_SOURCES} tests/sqlTests/crmTests/crmCtor.cpp)
+# macro for setting tests in erpTests
+macro(gen_erp_test TEST_NAME TEST_FILE)
 
-add_executable(admin_conn_ctor ${SQL_TEST_SOURCES} tests/sqlTests/adminTests/adminCtor.cpp)
+  gen_test(${TEST_NAME} ${ERP_TEST_PATH}/${TEST_FILE} ${SQL_TEST_SOURCES})
 
-#########################      DEPS LINK   #####################################
+endmacro()
 
-target_link_libraries(erp_conn_ctor ${QT_DEPS})
+# macro for setting tests in crmTests
+macro(gen_crm_test TEST_NAME TEST_FILE)
 
-target_link_libraries(crm_conn_ctor ${QT_DEPS})
+  gen_test(${TEST_NAME} ${CRM_TEST_PATH}/${TEST_FILE} ${SQL_TEST_SOURCES})
 
-target_link_libraries(admin_conn_ctor ${QT_DEPS})
+endmacro()
+
+# macro for setting tests in adminTests
+macro(gen_admin_test TEST_NAME TEST_FILE)
+
+  gen_test(${TEST_NAME} ${ADMIN_TEST_PATH}/${TEST_FILE} ${SQL_TEST_SOURCES})
+
+endmacro()
+
+#################################### ERP CONNECTION TESTS #################################
+
+# ctor dtor
+gen_erp_test(erp_conn_ctor erpCtor.cpp)
 
 
-########################     ADDING TESTS  ###################################
+################################### CRM CONNECTION TESTS ##################################
 
-add_test(NAME erp_conn_ctor COMMAND erp_conn_ctor)
+# ctor dtor
+gen_crm_test(crm_conn_ctor crmCtor.cpp)
 
-add_test(NAME crm_conn_ctor COMMAND crm_conn_ctor)
+################################## ADMIN CONNECTION TESTS #################################
 
-add_test(NAME admin_conn_ctor COMMAND admin_conn_ctor)
+#ctor dtor
+gen_admin_test(admin_conn_ctor adminCtor.cpp)
+
