@@ -9,17 +9,10 @@
 
 class sqlConnection{
 protected:
-    // database connection
+
     QSqlQuery*  query;
 
 public:
-    /*
-    // prepare a statment
-    virtual bool setQuery(const QString& queryString);
-    // begin /close transacitons
-    virtual bool init();
-    virtual bool commit();
-    */
 
     // To be inherited
 

@@ -4,8 +4,6 @@
 int main(){
 
   crmConnection test;
-  // begin transaction
-  test.init();
   // add user
   test.setQuery("insert into user (username, password) values (?, ?)");
   test.bindPositionalParam("testUser");
@@ -39,6 +37,4 @@ int main(){
        qFatal("failed to remove user");
       return 1;
   }
-  // end transaction
-  test.commit();
 }

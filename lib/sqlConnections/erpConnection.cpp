@@ -13,13 +13,7 @@ erpConnection::~erpConnection(){
 
 }
 
-bool erpConnection::init(){
-    return database.conn.transaction();
-}
 
-bool erpConnection::commit(){
-    return database.conn.commit();
-}
 
 // prepare a statment
 bool erpConnection::setQuery(const QString& queryString){
