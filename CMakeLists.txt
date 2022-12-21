@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(demoQt VERSION 0.1 LANGUAGES CXX)
 
+# set to off to not build tests.
+set(BUILD_TESTS ON)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -137,6 +139,8 @@ if(QT_VERSION_MAJOR EQUAL 6)
 endif()
 
 
+if(${BUILD_TESTS})
+
 ###################  TESTING ############################################################
 
 
@@ -216,3 +220,4 @@ gen_crm_test(crm_add_user crmUser.cpp)
 #ctor dtor
 gen_admin_test(admin_conn_ctor adminCtor.cpp)
 
+endif()
