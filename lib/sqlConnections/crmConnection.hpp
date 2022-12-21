@@ -9,7 +9,9 @@ class crmConnection: public sqlConnection{
 private:
     crmDatabase database;
 public:
-
+    bool init() ;
+    bool commit();
+    bool setQuery(const QString& queryString);
     crmConnection();
     ~crmConnection();
 };

@@ -12,3 +12,21 @@ adminConnection::~adminConnection(){
         delete query;
     }
 }
+
+bool adminConnection::init(){
+    return database.conn.transaction();
+}
+
+bool adminConnection::commit(){
+    return database.conn.commit();
+}
+
+// prepare a statment
+bool adminConnection::setQuery(const QString& queryString){
+    if(query != nullptr){
+        return query->prepare(queryString);
+    }
+
+    query = new QSqlQuery(database.conn);
+    return query->prepare(queryString);
+}

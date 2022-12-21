@@ -9,6 +9,9 @@ class adminConnection: public sqlConnection{
 private:
     adminDatabase database;
 public:
+    bool init();
+    bool commit();
+    bool setQuery(const QString& queryString);
     adminConnection();
     ~adminConnection();
 };
