@@ -14,6 +14,7 @@ public:
     bool setQuery(const QString& queryString);
     crmConnection();
     ~crmConnection();
+
 };
 
 

@@ -35,12 +35,18 @@ public:
 
     bool nextRes();
 
-
-    // returns the i'th element of the result
-    template<typename T>
-    T fetchResult(int i){
+    QVariant fetchResult(int i){
         return query->value(i);
+
+
     }
+
+
+    int querySize(){
+         return query->size();
+     }
+
+
 
 };
 
