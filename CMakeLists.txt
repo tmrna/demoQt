@@ -209,6 +209,7 @@ gen_erp_test(erp_conn_ctor erpCtor.cpp)
 
 # ctor dtor
 gen_crm_test(crm_conn_ctor crmCtor.cpp)
+gen_crm_test(crm_add_user crmUser.cpp)
 
 ################################## ADMIN CONNECTION TESTS #################################
 
