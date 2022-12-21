@@ -111,8 +111,12 @@ create table userAddress (
 
 create table userContact(
   id int not null ,
-  phone int not null ,
-  altPhone int,
+  phoneCountryCode int not null ,
+  phoneAreaCode int not null ,
+  phoneNumber int not null ,
+  altPhoneCountryCode int,
+  altPhoneAreaCode int,
+  altPhoneNumber int,
   email varchar(45) not null,
   foreign key (id) references user(id),
   primary key (id)
