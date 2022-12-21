@@ -24,7 +24,13 @@ public:
 
 
     // bind in the format select * from user where username = ?
-    void bindPositionalParam(const QString& param);
+    //void bindPositionalParam(const QString& param);
+    //void bindPositionalParam(const int&);
+
+    template <typename T>
+    void bindPositionalParam(const T& param){
+        query->addBindValue(param);
+    }
 
     bool nextRes();
 

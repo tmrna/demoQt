@@ -6,9 +6,13 @@ bool sqlConnection::querySetStatus(){
 }
 
 
-void sqlConnection::bindPositionalParam(const QString& param){
-    query->addBindValue(param);
-}
+//void sqlConnection::bindPositionalParam(const QString& param){
+//    query->addBindValue(param);
+//}
+//
+//void sqlConnection::bindPositionalParam(const int& param){
+//    query->addBindValue(param);
+//}
 
 bool sqlConnection::nextRes(){
     if(query == nullptr) return false;
