@@ -13,7 +13,6 @@ public:
     // ctor + dtor
     erpConnection();
     ~erpConnection();
-
 };
 
 

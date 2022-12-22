@@ -22,11 +22,7 @@ public:
     bool querySetStatus();
 
 
-
-    // bind in the format select * from user where username = ?
-    //void bindPositionalParam(const QString& param);
-    //void bindPositionalParam(const int&);
-
+    // only supporting positional
     template <typename T>
     void bindPositionalParam(const T& param){
         query->addBindValue(param);
@@ -36,8 +32,6 @@ public:
 
     QVariant fetchResult(int i){
         return query->value(i);
-
-
     }
 
 

@@ -5,15 +5,6 @@ bool sqlConnection::querySetStatus(){
     return (query != nullptr);
 }
 
-
-//void sqlConnection::bindPositionalParam(const QString& param){
-//    query->addBindValue(param);
-//}
-//
-//void sqlConnection::bindPositionalParam(const int& param){
-//    query->addBindValue(param);
-//}
-
 bool sqlConnection::nextRes(){
     if(query == nullptr) return false;
     return query->next();

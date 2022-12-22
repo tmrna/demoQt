@@ -7,10 +7,15 @@
 
 class crmConnection: public sqlConnection{
 private:
+
     crmDatabase database;
+
 public:
+
     bool setQuery(const QString& queryString);
+
     crmConnection();
+
     ~crmConnection();
 
 };
