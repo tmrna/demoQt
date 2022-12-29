@@ -83,7 +83,14 @@ set(PROJECT_SOURCES
 
         lib/sqlConnections/adminConnection.hpp
         lib/sqlConnections/adminConnection.cpp
+# User
 
+#--------  Credentials
+        lib/user/credentials/credentials.hpp
+
+#--------   employee
+        lib/user/employee/employee.hpp
+        lib/user/employee/employee.cpp
 #
 #        lib/readWrite/jsonRW.hpp
 #        lib/readWrite/jsonRW.cpp
