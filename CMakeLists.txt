@@ -88,7 +88,7 @@ set(PROJECT_SOURCES
 #--------  Credentials
         lib/user/credentials/credentials.hpp
 
-#--------   employee
+#--------   Employee
         lib/user/employee/employee.hpp
         lib/user/employee/employee.cpp
 #
