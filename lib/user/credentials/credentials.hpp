@@ -2,7 +2,7 @@
 #define CREDENTIALS_HPP
 
 #include <QString>
-
+#include <QCryptographicHash>
 
 // will be used for user, and clients
 class credentials {
@@ -16,9 +16,16 @@ protected:
   QString email;
 
 public:
-  virtual bool exists();
-  virtual bool verifyPassword();
+  virtual bool exists(){return true;}
+  virtual bool verifyPassword(){return true;}
+  /*
+   *  ctor and dtor not inherited
+   * */
+/*  credentials(){
+  }
 
+  ~credentials();
+*/
   void setUsername(const QString& newName){
     username = newName;
   }

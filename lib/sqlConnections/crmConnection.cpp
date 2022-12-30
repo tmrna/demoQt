@@ -18,8 +18,9 @@ crmConnection::~crmConnection(){
 
 // prepare a statment
 bool crmConnection::setQuery(const QString& queryString){
+    // clears prior query and positional params
     if(query != nullptr){
-        return query->prepare(queryString);
+        delete query;
     }
 
     query = new QSqlQuery(database.conn);

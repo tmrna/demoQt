@@ -5,6 +5,7 @@
 #include "../../lib/utils/utils.hpp"
 #include "../signup/signup.hpp"
 #include "../../lib/styling/effects.hpp"
+#include "../../lib/user/employee/employee.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Login; }
