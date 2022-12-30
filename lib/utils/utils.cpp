@@ -6,11 +6,13 @@ QString utils::getStyling(const char* path){
     QFile file(path);
     // check if file exists
     if(!file.exists()){
-        throw QString("DNE");
+        qFatal(path);
+        qFatal("Given qss file dne, exiting");
     }
     // attempt to open
     if(!file.open(QIODevice::ReadOnly)){
-        throw QString("FAILED TO OPEN");
+        qFatal("Failed to open file, exiting");
+        exit(1);
     }
 
     QString style(file.readAll());
@@ -20,6 +22,6 @@ QString utils::getStyling(const char* path){
     return style;
 }
 
-QString utils::getGeneralStyling(){
-    return utils::getStyling("../demoQt/lib/styling/style.qss");
+QString utils::getLoginStyling(){
+    return utils::getStyling("../demoQt/lib/styling/loginSignup.qss");
 }

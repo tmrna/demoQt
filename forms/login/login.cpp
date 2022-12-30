@@ -47,13 +47,13 @@ void Login::on_radioButton_clicked()
     // make new page
      signup* signupPage = new signup();
      // set the style to general
-     signupPage->setStyleSheet(utils::getGeneralStyling());
+     signupPage->setStyleSheet(utils::getLoginStyling());
      // hide login
      this->hide();
      // show signup
      signupPage->show();
      // kill login
-     this->close();
+     //this->show();
 }
 
 

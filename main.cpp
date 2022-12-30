@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
         Login w;
-        w.setStyleSheet(utils::getGeneralStyling());
+        w.setStyleSheet(utils::getLoginStyling());
         w.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         w.show();
         return a.exec();

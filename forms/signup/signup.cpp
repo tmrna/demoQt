@@ -58,7 +58,7 @@ void signup::on_passwordChkBox_stateChanged(int arg1)
 void signup::on_radioButton_clicked()
 {
     Login* loginPage = new Login();
-    loginPage->setStyleSheet(utils::getGeneralStyling());
+    loginPage->setStyleSheet(utils::getLoginStyling());
     this->hide();
     loginPage->show();
     this->close();
